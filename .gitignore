@@ -2,3 +2,5 @@
 *.swp
 *.exe
 *.log
+parser.out
+parsetab.py*
