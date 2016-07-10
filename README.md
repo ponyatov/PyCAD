@@ -15,4 +15,4 @@ github: https://github.com/ponyatov/PyCAD
 * [pyBison](http://freenet.mcnabhosting.com/python/pybison/)
 
 ### wxPython
-* [habr Meet wxPython](https://habrahabr.ru/post/137369)
+* [habr Знакомство с wxPython. Часть первая.](https://habrahabr.ru/post/137369)
