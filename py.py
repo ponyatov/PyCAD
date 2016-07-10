@@ -1,5 +1,12 @@
 import wx
 
+app = wx.App()
+frm = wx.Frame(None)
+frm.Show(True)
+frm2 = wx.Frame(None)
+frm2.Show(True)
+app.MainLoop()
+
 class AST:
     def __init__(self,V):
         self.tag=self.__class__.__name__.lower() ; self.val=V ; self.nest=[]
