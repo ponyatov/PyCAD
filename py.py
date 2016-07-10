@@ -19,6 +19,7 @@ class AST:
         return OP("*").push(self).push(o)
 
 class SYM(AST): pass
+class VAR(AST): pass
 class STR(AST): pass
 class INT(AST):
     def __init__(self,V): AST.__init__(self,V) ; self.val=int(self.val)
@@ -37,7 +38,7 @@ t_ignore = ' \t\r\n'
 def t_COMMENT(t):
     r'\#[^\n]*'
 
-tokens = ('SYM','INT','NUM','LP','RP','ADD','SUB','MUL','DIV')
+tokens = ('SYM','VAR','INT','NUM','LP','RP','ADD','SUB','MUL','DIV','EQ')
 
 t_LP = r'\('
 t_RP = r'\)'
@@ -49,8 +50,11 @@ def t_INT(t):
     r'[0-9]+'
     t.value = INT(t.value) ; return t
 def t_SYM(t):
-    r'[a-zA-Z0-9]+'
+    r'[a-z][a-zA-Z0-9]*'
     t.value = SYM(t.value) ; return t
+def t_VAR(t):
+    r'[A-Z_][a-zA-Z0-9]*'
+    t.value = VAR(t.value) ; return t
 
 def t_ADD(t):
     r'\+'
@@ -63,6 +67,10 @@ def t_MUL(t):
     t.value = OP(t.value) ; return t
 def t_DIV(t):
     r'\/'
+    t.value = OP(t.value) ; return t
+
+def t_EQ(t):
+    r'\='
     t.value = OP(t.value) ; return t
 
 def t_error(t):
@@ -88,6 +96,9 @@ def p_main(t):
 def p_sym(t):
     'ex : SYM '
     t[0] = t[1]
+def p_var(t):
+    'ex : VAR '
+    t[0] = t[1]
 def p_num(t):
     '''ex : NUM
         | INT'''
@@ -99,7 +110,8 @@ def p_ex(t):
     '''ex : ex ADD ex
         | ex SUB ex
         | ex MUL ex
-        | ex DIV ex '''
+        | ex DIV ex
+        | ex EQ ex'''
     t[0] = t[2].push(t[1]).push(t[3])
 def p_uplus(t):
     'ex : ADD ex %prec PFX'
@@ -115,5 +127,5 @@ import ply.yacc ; parser = ply.yacc.yacc()
 
 parser.parse('''
 # comment
-2+3.4*-5e+6
+_some = 2+3.4*-5e+6/SomeVar*term
 ''')
