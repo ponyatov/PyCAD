@@ -10,6 +10,7 @@ github: https://github.com/ponyatov/PyCAD
 ### Script & parsing
 
 * [PLY](http://www.dabeaz.com/ply) Python Lex/Yacc parsing library
+* Good [simple parser](http://www.dabeaz.com/ply/example.html) example: calculator with vars
 * Dr.Dobb's [Prototyping Interpreters using Python Lex-Yacc](http://www.drdobbs.com/web-development/prototyping-interpreters-using-python-le/184405580) (c) Shannon Behrens /Squeamish/
 
 ### wxPython
