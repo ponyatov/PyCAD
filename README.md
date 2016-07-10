@@ -7,6 +7,6 @@ github: https://github.com/ponyatov/PyCAD
 
 ## Links
 ### Script parsing
-	http://www.dabeaz.com/ply/
+	[PLY](http://www.dabeaz.com/ply/) Python Lex/Yacc parsing library
 ### wxPython
 	https://habrahabr.ru/post/137369/
